@@ -1,35 +1,35 @@
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.close-modal');
-const btnsOpenModal = [...document.getElementsByClassName('show-modal')];
+const btnsOpenModal = [...document.querySelectorAll('.show-modal')];
 
-function toggleModal() {
+
+function openModal() {
   if (modal.classList.contains('hidden')) {
     modal.classList.remove('hidden');
     overlay.classList.remove('hidden');
-  } else {
+  }
+}
+function closeModal() {
+  if (!modal.classList.contains('hidden')) {
     modal.classList.add('hidden');
     overlay.classList.add('hidden');
   }
 }
 
+// click to show the modal ------------------
 btnsOpenModal.forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    console.log(e.target.textContent);
-    // if (modal.classList.contains('hidden')) {
-    //   modal.classList.remove('hidden');
-    //   overlay.classList.remove('hidden');
-    // }
-    toggleModal();
+  btn.addEventListener('click', () => {
+    console.log(btn.textContent)
+    openModal();
   });
 });
 
-btnCloseModal.addEventListener('click', () => {
-  // if (!modal.classList.contains('hidden')) {
-  //   modal.classList.add('hidden');
-  //   overlay.classList.add('hidden');
-  // }
-  toggleModal();
-});
+// click to close the modal
+btnCloseModal.addEventListener('click', closeModal)
+overlay.addEventListener('click', closeModal)
 
-console.log(modal.classList.contains('hidden'));
+// keypress to close the modal
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal()
+})
