@@ -73,7 +73,7 @@ body {
   padding: 6rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem ragba(0, 0, 0, 0.3);
-  z-index: 3;
+  z-index: 2;
 }
 
 .overlay {
